@@ -1,0 +1,112 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply overflow-x-hidden scroll-smooth;
+  }
+  
+  @font-face {
+    font-family: 'Rosmatika';
+    src: url('https://www.fontspace.com/rosmatika-font-f73779') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .bloodlyf-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Typography */
+  .heading-1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-bloodlyf-darkblue;
+  }
+  
+  .heading-2 {
+    @apply text-2xl md:text-3xl font-serif font-semibold text-bloodlyf-darkblue;
+  }
+  
+  .heading-3 {
+    @apply text-xl md:text-2xl font-serif font-medium text-bloodlyf-darkblue;
+  }
+  
+  .subheading {
+    @apply text-lg text-bloodlyf-blue font-medium;
+  }
+  
+  .body-large {
+    @apply text-lg text-bloodlyf-taupe;
+  }
+  
+  .body {
+    @apply text-base text-bloodlyf-taupe;
+  }
+  
+  .body-small {
+    @apply text-sm text-bloodlyf-taupe/80;
+  }
+  
+  /* Buttons & Links */
+  .btn-primary {
+    @apply px-4 py-2 bg-bloodlyf-blue text-white rounded-full hover:bg-bloodlyf-darkblue transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-white text-bloodlyf-blue border border-bloodlyf-blue rounded-full hover:bg-bloodlyf-blue/10 transition-colors;
+  }
+  
+  .link {
+    @apply text-bloodlyf-blue hover:text-bloodlyf-darkblue hover:underline transition-colors;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-bloodlyf-beige/30;
+  }
+  
+  .card-hover {
+    @apply bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-bloodlyf-beige/30 hover:shadow-md hover:border-bloodlyf-beige/50 transition-all duration-300;
+  }
+  
+  /* Glass effect */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md rounded-xl border border-white/40 shadow-lg;
+  }
+
+  /* Writing mode for vertical text */
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  
+  /* Vertical text styling */
+  .vertical-text {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+  
+  /* BloodLyf brand button */
+  .btn-bloodlyf {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-bloodlyf-blue/90 text-white border border-white/30 hover:shadow-lg transition-all duration-300 shadow-md shadow-bloodlyf-blue/20;
+  }
+}
