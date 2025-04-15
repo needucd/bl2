@@ -28,31 +28,109 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     const baseUrl = "https://bloodlyf.com";
     const timestamp = new Date().toISOString().split('T')[0];
     
-    let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${baseUrl}/</loc>
-    <lastmod>${timestamp}</lastmod>
-    <priority>1.0</priority>
-  </url>`;
+    // Define all static routes
+    const staticRoutes = [
+      "/",
+      "/blog",
+      "/dashboard",
+      "/profile",
+      "/my-bookings",
+      "/pattom-area",
+      "/home-blood-collection-trivandrum",
+      "/blood-test-at-home-trivandrum",
+      "/doorstep-blood-collection-kerala",
+      "/home-sample-collection-trivandrum",
+      "/blood-test-home-service-kerala",
+      "/diagnostic-tests-at-home-trivandrum",
+      "/health-checkup-at-home-kerala",
+      "/blood-sample-collection-near-me",
+      "/best-home-blood-test-trivandrum",
+      "/affordable-blood-test-home-service",
+      "/thyroid-test-trivandrum",
+      "/comprehensive-diagnostic-tests-at-home-in-trivandrum"
+    ];
+
+    const packageRoutes = [
+      "diabetes-screening",
+      "heart-health-package",
+      "kidney-function-test",
+      "liver-function-test",
+      "cancer-screening",
+      "arthritis-bone-health",
+      "vitamin-deficiency-panel",
+      "obesity-metabolism-test",
+      "allergy-test-panel",
+      "stress-hormone-panel",
+      "sports-fitness-health-check",
+      "post-covid-health-check",
+      "gut-health-digestive-panel"
+    ];
+
+    const thyroidRoutes = [
+      "thyroid-profile-test",
+      "thyroid-function-test",
+      "thyroid-blood-test",
+      "thyroid-test-near-me-trivandrum",
+      "thyroid-test-home-collection-trivandrum",
+      "thyroid-test-home-service-kerala",
+      "best-thyroid-test-center-trivandrum"
+    ];
     
-    // Add pages
+    let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+    // Add static routes
+    staticRoutes.forEach(route => {
+      sitemapContent += `
+  <url>
+    <loc>${baseUrl}${route}</loc>
+    <lastmod>${timestamp}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${route === "/" ? "1.0" : "0.8"}</priority>
+  </url>`;
+    });
+
+    // Add package routes
+    packageRoutes.forEach(route => {
+      sitemapContent += `
+  <url>
+    <loc>${baseUrl}/package/${route}</loc>
+    <lastmod>${timestamp}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    });
+
+    // Add thyroid routes
+    thyroidRoutes.forEach(route => {
+      sitemapContent += `
+  <url>
+    <loc>${baseUrl}/thyroid/${route}</loc>
+    <lastmod>${timestamp}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    });
+    
+    // Add dynamic pages from props
     pages.forEach(page => {
       sitemapContent += `
   <url>
     <loc>${baseUrl}/${page.id}</loc>
     <lastmod>${page.lastUpdated || timestamp}</lastmod>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>`;
     });
     
-    // Add blogs
+    // Add blog posts
     blogs.forEach(blog => {
       sitemapContent += `
   <url>
     <loc>${baseUrl}/blog/${blog.id}</loc>
     <lastmod>${blog.date || timestamp}</lastmod>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>`;
     });
     
@@ -136,7 +214,7 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     sitemapContent += `
 </urlset>`;
     
-    // Create a blob and download link
+    // Create and download sitemap file
     const blob = new Blob([sitemapContent], { type: 'text/xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -150,8 +228,8 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     setIsGenerating(false);
     
     toast({
-      title: "Sitemap generated",
-      description: `The sitemap has been created with ${pages.length + blogs.length + missingThyroidPages.length} URLs and downloaded.`,
+      title: "Sitemap generated successfully",
+      description: "The sitemap has been created with all URLs and downloaded. Upload it to Google Search Console.",
     });
   };
   
