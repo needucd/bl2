@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
@@ -30,52 +29,128 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     
     // Define all static routes
     const staticRoutes = [
-      "/",
-      "/blog",
-      "/dashboard",
-      "/profile",
-      "/my-bookings",
-      "/pattom-area",
-      "/home-blood-collection-trivandrum",
-      "/blood-test-at-home-trivandrum",
-      "/doorstep-blood-collection-kerala",
-      "/home-sample-collection-trivandrum",
-      "/blood-test-home-service-kerala",
-      "/diagnostic-tests-at-home-trivandrum",
-      "/health-checkup-at-home-kerala",
-      "/blood-sample-collection-near-me",
-      "/best-home-blood-test-trivandrum",
-      "/affordable-blood-test-home-service",
-      "/thyroid-test-trivandrum",
-      "/comprehensive-diagnostic-tests-at-home-in-trivandrum"
+      {
+        url: "/",
+        priority: "1.0",
+        changefreq: "daily"
+      },
+      {
+        url: "/blog",
+        priority: "0.8",
+        changefreq: "daily"
+      },
+      {
+        url: "/dashboard",
+        priority: "0.7",
+        changefreq: "weekly"
+      },
+      {
+        url: "/profile",
+        priority: "0.6",
+        changefreq: "monthly"
+      },
+      {
+        url: "/my-bookings",
+        priority: "0.7",
+        changefreq: "weekly"
+      },
+      {
+        url: "/home-blood-collection-trivandrum",
+        priority: "0.9",
+        changefreq: "daily"
+      },
+      {
+        url: "/blood-test-at-home-trivandrum",
+        priority: "0.9",
+        changefreq: "daily"
+      },
+      {
+        url: "/doorstep-blood-collection-kerala",
+        priority: "0.9",
+        changefreq: "daily"
+      }
     ];
 
+    // Define package routes with proper format
     const packageRoutes = [
-      "diabetes-screening",
-      "heart-health-package",
-      "kidney-function-test",
-      "liver-function-test",
-      "cancer-screening",
-      "arthritis-bone-health",
-      "vitamin-deficiency-panel",
-      "obesity-metabolism-test",
-      "allergy-test-panel",
-      "stress-hormone-panel",
-      "sports-fitness-health-check",
-      "post-covid-health-check",
-      "gut-health-digestive-panel"
+      {
+        url: "/package/executive-health-checkup",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/comprehensive-health-checkup",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/diabetes-screening",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/heart-health-package",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/kidney-function-test",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/liver-function-test",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/cancer-screening",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/arthritis-bone-health",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/vitamin-deficiency-panel",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/obesity-metabolism-test",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/allergy-test-panel",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/stress-hormone-panel",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/sports-fitness-health-check",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/post-covid-health-check",
+        priority: "0.8",
+        changefreq: "weekly"
+      },
+      {
+        url: "/package/gut-health-digestive-panel",
+        priority: "0.8",
+        changefreq: "weekly"
+      }
     ];
 
-    const thyroidRoutes = [
-      "thyroid-profile-test",
-      "thyroid-function-test",
-      "thyroid-blood-test",
-      "thyroid-test-near-me-trivandrum",
-      "thyroid-test-home-collection-trivandrum",
-      "thyroid-test-home-service-kerala",
-      "best-thyroid-test-center-trivandrum"
-    ];
-    
+    // Start sitemap content
     let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
@@ -83,10 +158,10 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     staticRoutes.forEach(route => {
       sitemapContent += `
   <url>
-    <loc>${baseUrl}${route}</loc>
+    <loc>${baseUrl}${route.url}</loc>
     <lastmod>${timestamp}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${route === "/" ? "1.0" : "0.8"}</priority>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
   </url>`;
     });
 
@@ -94,25 +169,14 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     packageRoutes.forEach(route => {
       sitemapContent += `
   <url>
-    <loc>${baseUrl}/package/${route}</loc>
+    <loc>${baseUrl}${route.url}</loc>
     <lastmod>${timestamp}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
   </url>`;
     });
 
-    // Add thyroid routes
-    thyroidRoutes.forEach(route => {
-      sitemapContent += `
-  <url>
-    <loc>${baseUrl}/thyroid/${route}</loc>
-    <lastmod>${timestamp}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-    });
-    
-    // Add dynamic pages from props
+    // Add dynamic pages
     pages.forEach(page => {
       sitemapContent += `
   <url>
@@ -122,7 +186,7 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     <priority>0.7</priority>
   </url>`;
     });
-    
+
     // Add blog posts
     blogs.forEach(blog => {
       sitemapContent += `
@@ -133,87 +197,10 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     <priority>0.6</priority>
   </url>`;
     });
-    
-    // Add additional thyroid test pages
-    // Complete list from the user's request
-    const additionalThyroidPages = [
-      "thyroid/affordable-thyroid-test-trivandrum",
-      "thyroid/thyroid-test-laboratory-trivandrum",
-      "thyroid/t3-t4-tsh-test-trivandrum",
-      "thyroid/complete-thyroid-panel-test",
-      "thyroid/thyroid-antibody-test",
-      "thyroid/thyroid-screening-test",
-      "thyroid/thyroid-function-test-at-home",
-      "thyroid/comprehensive-thyroid-profile",
-      "thyroid/hypothyroidism-test-trivandrum",
-      "thyroid/hyperthyroidism-screening",
-      "thyroid/thyroid-disorder-test",
-      "thyroid/thyroid-hormone-test",
-      "thyroid/thyroid-health-check",
-      "thyroid/thyroid-disease-diagnosis",
-      "thyroid/thyroid-test-for-women",
-      "thyroid/thyroid-test-for-men",
-      "thyroid/thyroid-test-during-pregnancy",
-      "thyroid/senior-citizen-thyroid-test",
-      "thyroid/thyroid-test-for-weight-management",
-      "thyroid/thyroid-test-for-fatigue",
-      "thyroid/low-cost-thyroid-test-trivandrum",
-      "thyroid/home-thyroid-test-price",
-      "thyroid/thyroid-test-package",
-      "thyroid/thyroid-test-with-doctor-consultation",
-      "thyroid/fast-thyroid-test-results",
-      "thyroid/accurate-thyroid-function-test",
-      "thyroid/thyroid-stimulating-hormone-test",
-      "thyroid/free-t4-test",
-      "thyroid/total-t3-test",
-      "thyroid/thyroid-peroxidase-antibody-test",
-      "thyroid/thyroglobulin-antibody-test",
-      "thyroid/reverse-t3-test",
-      "thyroid/how-to-diagnose-thyroid-problems-in-trivandrum",
-      "thyroid/best-time-to-get-thyroid-test",
-      "thyroid/symptoms-that-indicate-need-for-thyroid-test",
-      "thyroid/thyroid-test-preparation-tips",
-      "thyroid/understanding-thyroid-test-results",
-      "thyroid/cost-of-comprehensive-thyroid-screening-in-kerala",
-      "thyroid/online-thyroid-test-booking-trivandrum",
-      "thyroid/book-thyroid-test-online",
-      "thyroid/home-collection-thyroid-test",
-      "thyroid/digital-thyroid-test-report",
-      "thyroid/whatsapp-thyroid-test-results",
-      "thyroid/thyroid-test-for-working-professionals",
-      "thyroid/thyroid-test-for-students",
-      "thyroid/thyroid-test-for-sedentary-lifestyle",
-      "thyroid/corporate-thyroid-health-package",
-      "thyroid/thyroid-test-for-fitness-enthusiasts",
-      "thyroid/thyroid-test-cost-comparison",
-      "thyroid/thyroid-test-accuracy",
-      "thyroid/best-thyroid-test-laboratory",
-      "thyroid/comprehensive-vs-basic-thyroid-test",
-      "thyroid/home-vs-lab-thyroid-test",
-      "thyroid/thyroid-health-awareness",
-      "thyroid/thyroid-test-guidelines",
-      "thyroid/importance-of-regular-thyroid-screening",
-      "thyroid/thyroid-test-fasting-requirements",
-      "thyroid/thyroid-test-interpretation-guide"
-    ];
-    
-    // Check if these are already in the pages list
-    const existingPageIds = pages.map(page => page.id);
-    const missingThyroidPages = additionalThyroidPages.filter(pageId => !existingPageIds.includes(pageId));
-    
-    // Add missing thyroid pages to sitemap
-    missingThyroidPages.forEach(pageId => {
-      sitemapContent += `
-  <url>
-    <loc>${baseUrl}/${pageId}</loc>
-    <lastmod>${timestamp}</lastmod>
-    <priority>0.7</priority>
-  </url>`;
-    });
-    
+
     sitemapContent += `
 </urlset>`;
-    
+
     // Create and download sitemap file
     const blob = new Blob([sitemapContent], { type: 'text/xml' });
     const url = URL.createObjectURL(blob);
@@ -229,7 +216,7 @@ export const SitemapGenerator = ({ pages, blogs }: SitemapGeneratorProps) => {
     
     toast({
       title: "Sitemap generated successfully",
-      description: "The sitemap has been created with all URLs and downloaded. Upload it to Google Search Console.",
+      description: "The sitemap has been created and downloaded. Upload it to Google Search Console.",
     });
   };
   
