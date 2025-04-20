@@ -61,7 +61,7 @@ const AnnouncementBar = () => {
     };
   }, []);
 
-  const announcement = "🩸 Special Offer: 20% off on all health packages this month! • Free home collection for orders above ₹999 • Get your reports within 24 hours • Now open in 35+ locations across the city • ";
+  const announcement = "🩸 Special Introductory Offer: 40% off on all health packages this month! • Free home collection for orders above ₹999 • Get your reports within 24 hours • We are live in Trivandrum.  • ";
 
   return (
     <div 

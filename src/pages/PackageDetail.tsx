@@ -12,61 +12,253 @@ import { cn } from '@/lib/utils';
 
 const packages = [
   {
+  id: "advanced-full-body-checkup",
+  name: "Advanced Full Body Checkup",
+  category: "Full Body Checkups",
+  price: 2500,
+  originalPrice: 5250,
+  rating: 4.8,
+  reviewCount: 124,
+  image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  description: "BloodLyf’s Advanced Full Body Checkup includes all essential tests to monitor your complete health status. It helps in early detection of metabolic, hormonal, nutritional, and organ function-related issues — making it ideal for comprehensive screening.",
+  inclusions: [
+    "Complete Blood Count (CBC)",
+    "Erythrocyte Sedimentation Rate (ESR)",
+    "Liver Function Test (LFT)",
+    "Kidney Function Test (KFT)",
+    "Lipid Profile",
+    "HbA1c",
+    "Thyroid Stimulating Hormone (TSH)",
+    "Vitamin B12",
+    "Vitamin D",
+    "Calcium",
+    "Phosphorus",
+    "Urine Complete Examination (CUE)"
+  ],
+  recommendations: [
+    "Recommended for individuals above 30 years",
+    "Ideal for comprehensive preventive screening",
+    "Suggested once every 6 to 12 months"
+  ]
+}
+
+  ,
+  {
     id: "basic-health-checkup",
     name: "Basic Health Checkup",
     category: "Full Body Checkups",
-    price: 59,
-    originalPrice: 79,
+    price: 1100,
+    originalPrice: 1580,
     rating: 4.8,
     reviewCount: 124,
     image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Our Basic Health Checkup package is designed to give you a comprehensive overview of your health status. It includes essential tests to evaluate your blood count, liver and kidney function, blood sugar, and lipid profile.",
+    description: "Our Basic Health Checkup package gives you a fundamental overview of your health status. It includes core tests like CBC, liver and kidney function, blood sugar, lipid profile, and urine analysis to detect early signs of health issues.",
     inclusions: [
       "Complete Blood Count (CBC)",
       "Blood Glucose (Fasting)",
-      "Liver Function Test",
-      "Kidney Function Test",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
       "Lipid Profile",
       "Urine Routine Examination",
-      "Chest X-Ray (if required)",
-      "ECG (if required)"
+      "Erythrocyte Sedimentation Rate (ESR)"
     ],
     recommendations: [
       "Recommended for adults of all ages",
       "Suggested frequency: Annual checkup",
       "Best for general health assessment"
     ]
-  },
+  }
+  ,
+
   {
-    id: "advanced-full-body-checkup",
-    name: "Advanced Full Body Checkup",
+    id: "executive-health-checkup",
+    name: "Executive Health Checkup",
     category: "Full Body Checkups",
-    price: 129,
-    originalPrice: 169,
+    price: 3200,
+    originalPrice: 6000,
     rating: 4.9,
-    reviewCount: 98,
-    image: "https://images.unsplash.com/photo-1624628639856-100bf817fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "The Advanced Full Body Checkup is our comprehensive health assessment package that covers all major organs and systems. It includes over 70 tests to give you a detailed insight into your health status and identify potential health concerns early.",
+    reviewCount: 150,
+    image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    description: "BloodLyf's Executive Health Checkup is designed for working professionals, leaders, and executives who want a deep dive into their health. It includes an advanced panel of hormonal, cardiac, metabolic, and cancer markers to ensure early detection and proactive wellness management.",
     inclusions: [
-      "Complete Blood Count with ESR",
-      "HbA1c & Fasting Blood Glucose",
-      "Comprehensive Liver Function Tests",
-      "Advanced Kidney Function Tests",
-      "Complete Lipid Profile",
-      "Thyroid Profile",
-      "Vitamin Levels (B12, D3)",
-      "Urine Complete Examination",
-      "Chest X-Ray",
+      "Complete Blood Count (CBC)",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Lipid Profile",
+      "Thyroid Stimulating Hormone (TSH)",
+      "HbA1c",
+      "Homocysteine",
+      "hsCRP",
+      "Apo A1",
+      "Apo B",
+      "Vitamin D",
+      "Vitamin B12",
       "ECG",
-      "Abdominal Ultrasound"
+      "PSA",
+      "CA-125"
     ],
     recommendations: [
-      "Recommended for adults above 30 years",
-      "Suggested frequency: Annual checkup",
-      "Ideal for comprehensive health assessment",
-      "Beneficial for those with family history of chronic diseases"
+      "Ideal for working professionals, executives, and high-stress lifestyle individuals",
+      "Suggested every 12 months for proactive screening",
+      "Covers cardiac, hormonal, metabolic, and cancer risk markers"
     ]
   }
+    ,
+
+    {
+      id: "senior-citizen-health-package",
+      name: "Senior Citizen Health Package",
+      category: "Full Body Checkups",
+      price: 5000,
+      originalPrice: 8950,
+      rating: 4.9,
+      reviewCount: 112,
+      image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      description: "This Senior Citizen Health Package is designed to provide a comprehensive overview of all vital health parameters in aging adults. It covers chronic condition screening, heart health, kidney and liver function, cancer markers, and bone health — making it ideal for proactive elderly care.",
+      inclusions: [
+        "Complete Blood Count (CBC)",
+        "HbA1c",
+        "Thyroid Stimulating Hormone (TSH)",
+        "Kidney Function Test (KFT)",
+        "Liver Function Test (LFT)",
+        "Lipid Profile",
+        "Calcium",
+        "Vitamin D",
+        "Vitamin B12",
+        "ECG",
+        "PSA",
+        "CA-125",
+        "Urine Complete Examination (CUE)",
+        "Homocysteine",
+        "Ferritin",
+        "Bone Profile"
+      ],
+      recommendations: [
+        "Highly recommended for individuals aged 60 and above",
+        "Best suited for chronic condition monitoring and early risk detection",
+        "Suggested once every 6 months or as per physician's advice"
+      ]
+    },
+    {
+      id: "womens-wellness-package",
+      name: "Women's Wellness Package",
+      category: "Full Body Checkups",
+      price: 3500,
+      originalPrice: 6650,
+      rating: 4.8,
+      reviewCount: 98,
+      image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      description: "The Women's Wellness Package is tailored to address essential health parameters for women of all ages. It includes a broad range of tests to monitor hormonal balance, cancer markers, vitamin levels, and organ health, providing a complete view of overall well-being.",
+      inclusions: [
+        "Complete Blood Count (CBC)",
+        "Thyroid Stimulating Hormone (TSH)",
+        "HbA1c",
+        "Liver Function Test (LFT)",
+        "Kidney Function Test (KFT)",
+        "Lipid Profile",
+        "CA-125",
+        "Vitamin D",
+        "Vitamin B12",
+        "Folic Acid",
+        "Follicle Stimulating Hormone (FSH)",
+        "Luteinizing Hormone (LH)",
+        "Prolactin",
+        "Urine Complete Examination (CUE)"
+      ],
+      recommendations: [
+        "Ideal for women of all age groups",
+        "Suggested once a year for hormone and health monitoring",
+        "Helpful in screening for early symptoms of deficiencies, hormonal imbalance, and gynecologic conditions"
+      ]
+    }
+,    
+{
+  id: "mens-wellness-package",
+  name: "Men's Wellness Package",
+  category: "Full Body Checkups",
+  price: 7000,
+  originalPrice: 11650,
+  rating: 4.8,
+  reviewCount: 105,
+  image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  description: "The Men's Wellness Package is designed to address key health concerns for men, including hormonal balance, cardiac health, organ function, and nutritional status. It enables early detection of lifestyle-related risks and supports long-term well-being.",
+  inclusions: [
+    "Complete Blood Count (CBC)",
+    "Prostate Specific Antigen (PSA)",
+    "Testosterone",
+    "Thyroid Stimulating Hormone (TSH)",
+    "HbA1c",
+    "Lipid Profile",
+    "Liver Function Test (LFT)",
+    "Kidney Function Test (KFT)",
+    "Vitamin D",
+    "Vitamin B12",
+    "Homocysteine",
+    "Apolipoprotein A1 (Apo A1)",
+    "Apolipoprotein B (Apo B)"
+  ],
+  recommendations: [
+    "Ideal for men aged 30 and above",
+    "Suggested annually for preventive health tracking",
+    "Helps detect early signs of hormonal, cardiac, and metabolic imbalances"
+  ]
+}
+,
+{
+  id: "pre-marital-health-check",
+  name: "Pre-Marital Health Check",
+  category: "Full Body Checkups",
+  price: 14000,
+  originalPrice: 17400,
+  rating: 4.9,
+  reviewCount: 88,
+  image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  description: "This Pre-Marital Health Check package is tailored for couples planning marriage. It screens for genetic, infectious, and reproductive health markers to ensure informed decision-making and promote long-term wellness.",
+  inclusions: [
+    "Complete Blood Count (CBC)",
+    "Hb Electrophoresis",
+    "VDRL",
+    "HIV",
+    "HBsAg",
+    "HCV",
+    "Blood Group",
+    "Urine Complete Examination (CUE)",
+    "Rubella IgG",
+    "Thalassemia Screening"
+  ],
+  recommendations: [
+    "Recommended for individuals planning to get married",
+    "Helps detect hereditary and infectious conditions early",
+    "Ensures responsible health planning for future family life"
+  ]
+}
+,
+{
+  id: "diabetes-screening",
+  name: "Diabetes Screening",
+  category: "Disease-Specific Tests",
+  price: 1500,
+  originalPrice: 3340,
+  rating: 4.7,
+  reviewCount: 76,
+  image: "https://images.unsplash.com/photo-1588777244972-8574525caec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  description: "This Diabetes Screening package is designed to detect early signs of diabetes and monitor blood sugar management effectively. It includes glucose and insulin levels, long-term glycemic control markers, and kidney-related complications.",
+  inclusions: [
+    "Fasting Glucose",
+    "Postprandial Glucose",
+    "HbA1c",
+    "Insulin",
+    "Urine Microalbumin",
+    "Creatinine",
+    "Lipid Profile"
+  ],
+  recommendations: [
+    "Recommended for individuals at risk of diabetes or with a family history",
+    "Ideal for monitoring blood glucose and related kidney complications",
+    "Suggested every 6–12 months based on health status"
+  ]
+},
+
 ];
 
 const PackageDetail = () => {
@@ -175,16 +367,17 @@ const PackageDetail = () => {
                 </div>
                 
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl font-medium">${packageData.price}</span>
+                   <span className="text-2xl font-medium">₹{packageData.price}</span>
                   {packageData.originalPrice && (
-                    <span className="text-lg text-bloodlyf-taupe/70 line-through">${packageData.originalPrice}</span>
+                  <span className="text-lg text-bloodlyf-taupe/70 line-through">₹{packageData.originalPrice}</span>
                   )}
-                  {packageData.originalPrice && (
+                    {packageData.originalPrice && (
                     <span className="text-sm px-2 py-1 bg-green-100 text-green-800 rounded-full">
-                      Save {Math.round(100 - (packageData.price / packageData.originalPrice) * 100)}%
+                     Save {Math.round(100 - (packageData.price / packageData.originalPrice) * 100)}%
                     </span>
-                  )}
+                     )}
                 </div>
+
                 
                 <p className="text-bloodlyf-taupe/80 mb-6">{packageData.description}</p>
                 
