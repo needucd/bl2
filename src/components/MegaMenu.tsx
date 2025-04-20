@@ -38,7 +38,9 @@ const menuCategories = [
     items: [
       { name: "Vitamin Deficiency Panel", href: "/package/vitamin-deficiency-panel" },
       { name: "Obesity & Metabolism Test", href: "/package/obesity-metabolism-test" },
-      { name: "Allergy Test Panel", href: "/package/allergy-test-panel" },
+      { name: "Allergy Test Panel - Non Veg", href: "/package/allergy-test-panel-nonveg" },
+      { name: "Allergy Test Panel - Veg", href: "/package/allergy-test-panel-veg" },
+      { name: "Allergy Test Panel - Veg & Non-Veg", href: "/package/allergy-test-panel-veg&nonveg" },
       { name: "Stress & Hormone Panel", href: "/package/stress-hormone-panel" },
       { name: "Sports & Fitness Health Check", href: "/package/sports-fitness-health-check" },
       { name: "Post-COVID Health Check", href: "/package/post-covid-health-check" },
