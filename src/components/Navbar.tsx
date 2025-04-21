@@ -194,7 +194,7 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <span 
+                <span  
   className="p-1 flex items-center gap-2 rounded-full text-sm text-gray-400 cursor-not-allowed"
   title="Login temporarily disabled"
 >
