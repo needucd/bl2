@@ -63,30 +63,8 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleLogin = async () => {
-    try {
-      setLoading(true);
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin,
-        }
-      });
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      toast({
-        title: 'Error signing in',
-        description: error.message || 'An unexpected error occurred',
-        variant: 'destructive',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  
+    
   const handleLogout = async () => {
     try {
       setLoading(true);
@@ -216,15 +194,13 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Button 
-                  onClick={handleLogin} 
-                  variant="ghost" 
-                  className="p-1 flex items-center gap-2 hover:bg-bloodlyf-beige/30 rounded-full"
-                  disabled={loading}
-                >
-                  <User className="h-5 w-5 text-bloodlyf-taupe" />
-                  <span className="text-sm">Login</span>
-                </Button>
+                <Link 
+  to="/login" 
+  className="p-1 flex items-center gap-2 hover:bg-bloodlyf-beige/30 rounded-full text-sm text-bloodlyf-taupe"
+>
+  <User className="h-5 w-5" />
+  <span>Login</span>
+</Link>
               )
             )}
             
@@ -302,13 +278,12 @@ const Navbar = () => {
                       </button>
                     </div>
                   ) : (
-                    <button 
-                      onClick={handleLogin}
-                      className="p-2 rounded-full bg-bloodlyf-beige/10 hover:bg-bloodlyf-beige/30 transition-colors"
-                      disabled={loading}
-                    >
-                      <User className="h-5 w-5 text-bloodlyf-taupe" />
-                    </button>
+                    <Link 
+  to="/login" 
+  className="p-2 rounded-full bg-bloodlyf-beige/10 hover:bg-bloodlyf-beige/30 transition-colors"
+>
+  <User className="h-5 w-5 text-bloodlyf-taupe" />
+</Link>
                   )
                 )}
                 

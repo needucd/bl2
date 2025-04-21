@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://bloodlyf.com/sitemap.xml
