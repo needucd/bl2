@@ -20,6 +20,7 @@ import BestHomeBloodTest from './pages/BestHomeBloodTest';
 import AffordableBloodTest from './pages/AffordableBloodTest';
 import ThyroidTestTrivandrum from './pages/ThyroidTestTrivandrum';
 import ComprehensiveDiagnosticTests from './pages/ComprehensiveDiagnosticTests';
+import Login from './pages/Login';
 import './App.css';
 
 // Thyroid test subpages
@@ -52,6 +53,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/package/:packageId" element={<PackageDetail />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -93,6 +95,7 @@ function App() {
 
           {/* Fallback for undefined routes */}
           <Route path="/thyroid/*" element={<ThyroidTestTrivandrum />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
           
         </Routes>

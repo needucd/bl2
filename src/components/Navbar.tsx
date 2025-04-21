@@ -194,13 +194,13 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link 
-  to="/login" 
-  className="p-1 flex items-center gap-2 hover:bg-bloodlyf-beige/30 rounded-full text-sm text-bloodlyf-taupe"
+                <span 
+  className="p-1 flex items-center gap-2 rounded-full text-sm text-gray-400 cursor-not-allowed"
+  title="Login temporarily disabled"
 >
-  <User className="h-5 w-5" />
+  <User className="h-5 w-5 text-gray-400" />
   <span>Login</span>
-</Link>
+</span>
               )
             )}
             

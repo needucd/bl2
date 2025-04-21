@@ -1,64 +1,85 @@
-import React, { useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import { useNavigate } from 'react-router-dom';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import React, { useState } from 'react'
+import { supabase } from '../supabase'
+import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
-  const [phone, setPhone] = useState('');
-  const [otp, setOtp] = useState('');
-  const [step, setStep] = useState<'phone' | 'otp'>('phone');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+const Login = () => {
+  const [phone, setPhone] = useState('')
+  const [otp, setOtp] = useState('')
+  const [step, setStep] = useState<'phone' | 'otp'>('phone')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
-  const handleSendOTP = async () => {
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({ phone });
-    setLoading(false);
+  const sendOTP = async () => {
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithOtp({
+      phone: phone.startsWith('+') ? phone : `+91${phone}`,
+    })
+    setLoading(false)
 
-    if (error) return alert(error.message);
-    setStep('otp');
-  };
+    if (error) {
+      setMessage(`❌ Error sending OTP: ${error.message}`)
+    } else {
+      setMessage('✅ OTP sent! Please check your phone.')
+      setStep('otp')
+    }
+  }
 
-  const handleVerifyOTP = async () => {
-    setLoading(true);
-    const { error } = await supabase.auth.verifyOtp({ phone, token: otp, type: 'sms' });
-    setLoading(false);
+  const verifyOTP = async () => {
+    setLoading(true)
+    const { data, error } = await supabase.auth.verifyOtp({
+      phone: phone.startsWith('+') ? phone : `+91${phone}`,
+      token: otp,
+      type: 'sms',
+    })
+    setLoading(false)
 
-    if (error) return alert(error.message);
-
-    // 🔁 Redirect to profile setup page if needed
-    navigate('/profile-setup');
-  };
+    if (error) {
+      setMessage(`❌ Verification failed: ${error.message}`)
+    } else {
+      setMessage('✅ Login successful!')
+      console.log('User:', data.session?.user)
+      navigate('/dashboard') // ✅ redirect to dashboard
+    }
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="bg-white shadow-md rounded-lg p-6 max-w-sm w-full">
-        <h1 className="text-xl font-bold mb-4 text-center">Login with Phone</h1>
-        {step === 'phone' ? (
-          <>
-            <Input
-              placeholder="+91XXXXXXXXXX"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            <Button className="mt-4 w-full" onClick={handleSendOTP} disabled={loading}>
-              {loading ? 'Sending...' : 'Send OTP'}
-            </Button>
-          </>
-        ) : (
-          <>
-            <Input
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            <Button className="mt-4 w-full" onClick={handleVerifyOTP} disabled={loading}>
-              {loading ? 'Verifying...' : 'Verify OTP'}
-            </Button>
-          </>
-        )}
-      </div>
+    <div style={{ padding: '2rem', maxWidth: 400, margin: 'auto' }}>
+      <h2>Login with Phone</h2>
+
+      {step === 'phone' && (
+        <>
+          <input
+            type="text"
+            placeholder="Phone number (e.g. 8590600006)"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            style={{ width: '100%', marginBottom: '1rem' }}
+          />
+          <button onClick={sendOTP} disabled={loading}>
+            {loading ? 'Sending OTP...' : 'Send OTP'}
+          </button>
+        </>
+      )}
+
+      {step === 'otp' && (
+        <>
+          <input
+            type="text"
+            placeholder="Enter OTP"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            style={{ width: '100%', marginBottom: '1rem' }}
+          />
+          <button onClick={verifyOTP} disabled={loading}>
+            {loading ? 'Verifying...' : 'Verify OTP'}
+          </button>
+        </>
+      )}
+
+      {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
     </div>
-  );
+  )
 }
+
+export default Login
